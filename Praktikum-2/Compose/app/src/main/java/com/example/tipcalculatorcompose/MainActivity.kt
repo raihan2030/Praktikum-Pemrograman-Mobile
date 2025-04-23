@@ -20,7 +20,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -40,6 +39,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.tipcalculatorcompose.ui.theme.TipCalculatorComposeTheme
 import java.text.NumberFormat
 import java.util.Locale
@@ -71,7 +71,7 @@ fun TipTimeLayout() {
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipPercent = selectedOption.toDouble()
     var roundUp by remember { mutableStateOf(false) }
-    val totalAmount = calculateTip(amount, tipPercent, roundUp)
+    val tipAmount = calculateTip(amount, tipPercent, roundUp)
 
     Column (
         modifier = Modifier
@@ -148,8 +148,8 @@ fun TipTimeLayout() {
         )
 
         Text(
-            text = stringResource(R.string.tip_amount, totalAmount),
-            style = MaterialTheme.typography.displaySmall,
+            text = stringResource(R.string.tip_amount, tipAmount),
+            fontSize = 27.sp,
             fontWeight = FontWeight.Bold
         )
     }
@@ -201,16 +201,20 @@ fun RoundTheTipRow(
 }
 
 private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
-    val tip = (tipPercent / 100) * amount
-    var totalAmount = amount + tip
+    var tipAmount = (tipPercent / 100) * amount
     if(roundUp){
-        totalAmount = kotlin.math.ceil(totalAmount)
+        tipAmount = kotlin.math.ceil(tipAmount)
     }
 
-    return NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount)
+    return NumberFormat.getCurrencyInstance(Locale.US).format(tipAmount)
 }
 
-@Preview(showBackground = true)
+@Preview(
+    name = "Redmi Note 13",
+    widthDp = 360,
+    heightDp = 800,
+    showBackground = true
+)
 @Composable
 fun TipCalculatorPreview() {
     TipCalculatorComposeTheme {
