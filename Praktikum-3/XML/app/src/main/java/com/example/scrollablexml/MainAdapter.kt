@@ -1,12 +1,9 @@
 package com.example.scrollablexml
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scrollablexml.databinding.AdapterMainBinding
 import com.example.scrollablexml.model.KamenRider
 
 class MainAdapter (
@@ -15,28 +12,27 @@ class MainAdapter (
     private val onDetailClick: (Int) -> Unit
 
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val riderImage = view.findViewById<ImageView>(R.id.riderImage)
-        val riderName = view.findViewById<TextView>(R.id.riderName)
-        val riderYear = view.findViewById<TextView>(R.id.riderYear)
-        val riderDesc = view.findViewById<TextView>(R.id.descBody)
-        val imdbBtn = view.findViewById<Button>(R.id.imdbBtn)
-        val detailBtn = view.findViewById<Button>(R.id.detailBtn)
+    class ViewHolder(private val binding: AdapterMainBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(rider: KamenRider, onImdbClick: (String) -> Unit, onDetailClick: (Int) -> Unit) {
+
+            binding.riderImage.setImageResource(rider.posterRes)
+            binding.riderName.text = rider.name
+            binding.riderYear.text = "${rider.year}"
+            binding.descBody.text = rider.description
+            binding.imdbBtn.setOnClickListener { onImdbClick(rider.imdbUrl) }
+            binding.detailBtn.setOnClickListener { onDetailClick(rider.id) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.adapter_main, parent, false))
+        val binding = AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount() = listRider.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val rider = listRider[position]
-        holder.riderImage.setImageResource(rider.posterRes)
-        holder.riderName.text = rider.name
-        holder.riderYear.text = "${rider.year}"
-        holder.riderDesc.text = rider.description
-        holder.imdbBtn.setOnClickListener { onImdbClick(rider.imdbUrl) }
-        holder.detailBtn.setOnClickListener { onDetailClick(rider.id) }
+        holder.bind(rider, onImdbClick, onDetailClick)
     }
 }
