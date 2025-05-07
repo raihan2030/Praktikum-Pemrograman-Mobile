@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ScrollableCompose"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/Theme.ScrollableCompose" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

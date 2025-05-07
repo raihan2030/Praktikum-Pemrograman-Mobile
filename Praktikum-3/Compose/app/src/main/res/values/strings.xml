@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ScrollableCompose</string>
+    <string name="topappbarr_title">My Favorite Kamen Rider</string>
+    <string name="year">Tahun: %d</string>
+    <string name="description">Deskripsi: </string>
+    <string name="imdb">IMDb</string>
+    <string name="detail">Detail</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
