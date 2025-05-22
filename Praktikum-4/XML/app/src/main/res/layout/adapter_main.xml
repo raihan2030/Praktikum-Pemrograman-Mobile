@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="?android:attr/colorBackground"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="15dp">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/riderImage"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/kr_geats"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/RoundedImageView"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/riderImage"
+                android:layout_marginStart="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/titleYearLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/riderName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/riderYear"
+                        app:layout_constraintHorizontal_weight="6"
+                        android:textSize="20sp"
+                        tools:text="Kamen Rider Geats"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/riderYear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/riderName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="2"
+                        android:gravity="end"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="2022" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/descTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/titleYearLayout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/desc"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descBody"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/descTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="3dp"
+                    android:justificationMode="inter_word"
+                    tools:text="Deskripsi panjang lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/descBody"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="15dp">
+
+                    <Button
+                        android:id="@+id/imdbBtn"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:textSize="12sp"
+                        app:cornerRadius="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/detailBtn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/imdb" />
+
+                    <Button
+                        android:id="@+id/detailBtn"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        app:cornerRadius="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/detail" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
