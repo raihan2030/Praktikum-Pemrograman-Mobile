@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ApiCompose</string>
+    <string name="title">Film TMDB</string>
+    <string name="overview">Overview</string>
+    <string name="website">Website</string>
+    <string name="visit_website">Kunjungi Website</string>
+    <string name="details">Details</string>
+    <string name="detail_film">Detail Film</string>
+    <string name="try_again">Coba Lagi</string>
+    <string name="no_film_found">Tidak ada film yang ditemukan saat ini.</string>
+    <string name="no_detail">Tidak ada detail film yang tersedia.</string>
+</resources>
